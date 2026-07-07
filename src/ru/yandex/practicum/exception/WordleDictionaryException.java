@@ -4,6 +4,7 @@ import java.io.IOException;
 
 public class WordleDictionaryException extends IOException {
 
-    public WordleDictionaryException(){}
+    public WordleDictionaryException(){
+    }
 
 }
