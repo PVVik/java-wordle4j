@@ -2,6 +2,7 @@ package ru.yandex.practicum;
 
 import ru.yandex.practicum.exception.WordLengthException;
 import ru.yandex.practicum.exception.WordNotFoundInDictionary;
+import ru.yandex.practicum.exception.WordleDictionaryException;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -78,7 +79,7 @@ public class Wordle {
                     fileWriter.write("\n");
                 }
             }
-        } catch (IOException e) {
+        } catch (WordleDictionaryException e) {
             fileWriter.write(Arrays.toString(e.getStackTrace()));
             fileWriter.write("\n");
             fileWriter.flush();

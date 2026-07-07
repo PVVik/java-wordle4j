@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.yandex.practicum.exception.WordLengthException;
 import ru.yandex.practicum.exception.WordNotFoundInDictionary;
+import ru.yandex.practicum.exception.WordleDictionaryException;
 
 import java.io.IOException;
 
@@ -21,10 +22,8 @@ class WordleTest {
 
     @Test
     public void wordleDictionaryLoaderTest_shouldGetExceptionWithNonExistentFile() {
-        RuntimeException e = Assertions.assertThrows(RuntimeException.class, () ->
+        WordleDictionaryException e = Assertions.assertThrows(WordleDictionaryException.class, () ->
                 new WordleDictionaryLoader("someFile.txt"));
-
-        Assertions.assertTrue(e.getCause() instanceof java.io.IOException);
     }
 
     @Test

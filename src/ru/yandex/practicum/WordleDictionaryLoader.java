@@ -1,5 +1,7 @@
 package ru.yandex.practicum;
 
+import ru.yandex.practicum.exception.WordleDictionaryException;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -9,14 +11,15 @@ import java.util.List;
 
 public class WordleDictionaryLoader {
 
+    public static final int WORD_LENGTH = 5;
     private final BufferedReader br;
 
-    public WordleDictionaryLoader(String fileName) {
+    public WordleDictionaryLoader(String fileName) throws WordleDictionaryException {
         try {
             br = new BufferedReader(new FileReader(fileName, StandardCharsets.UTF_8));
         } catch (IOException e) {
             System.out.println("Что-то не так со словарём. Проверьте файл, пожалуйста!");
-            throw new RuntimeException(e);
+            throw new WordleDictionaryException();
         }
     }
 
@@ -25,7 +28,7 @@ public class WordleDictionaryLoader {
 
         while (br.ready()) {
             String word = br.readLine();
-            if (word.length() == 5) {
+            if (word.length() == WORD_LENGTH) {
                 word.toLowerCase();
 
                 if (word.contains("ё")) {

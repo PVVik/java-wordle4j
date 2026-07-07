@@ -19,7 +19,7 @@ public class WordleGame {
     }
 
     public boolean isValid(String word) throws WordLengthException, WordNotFoundInDictionary {
-        if (word.length() != 5) {
+        if (word.length() != WordleDictionaryLoader.WORD_LENGTH) {
             System.out.println("Загадайте слово из 5 букв!");
             throw new WordLengthException();
 
@@ -64,7 +64,7 @@ public class WordleGame {
     }
 
     public boolean isStepTooMuch() {
-        return steps >= 6;
+        return steps >= WordleDictionaryLoader.WORD_LENGTH + 1;
     }
 
     public void setAnswer(String answer) {
